@@ -1,0 +1,8 @@
+{
+    "yaml.schemas": {
+        "openapi:v3": [
+            "file:///c%3A/Users/asinh/OneDrive/Desktop/hng3/openapi.yaml"
+        ],
+        "swaggerviewer:openapi": "file:///c%3A/Users/asinh/OneDrive/Desktop/hng3/src/openapi.yaml"
+    }
+}
