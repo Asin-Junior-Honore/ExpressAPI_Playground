@@ -5,7 +5,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "node ./build/index.js",
-    "build": "npm install && tsc"
+    "build": "npm install && tsc",
+    "copy-views": "copyfiles -u 1 src/views/**/* build"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "@types/node": "^20.14.10",
     "@types/pg": "^8.11.6",
     "@types/swagger-ui-express": "^4.1.6",
+    "copyfiles": "^2.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   },

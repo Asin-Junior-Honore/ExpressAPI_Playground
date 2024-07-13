@@ -19,12 +19,12 @@ app.use('/api/users', userRoutes);
 app.use('/api/greetings', greetingRoutes);
 
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the views directory
+app.use(express.static(path.join(__dirname, 'views')));
 
 // Handle all routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 // Function to sync database

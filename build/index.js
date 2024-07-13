@@ -27,11 +27,11 @@ app.use(express_1.default.json());
 // Routes
 app.use('/api/users', userRoutes_1.default);
 app.use('/api/greetings', greetingRoutes_1.default);
-// Serve static files from the public directory
-app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+// Serve static files from the views directory
+app.use(express_1.default.static(path_1.default.join(__dirname, 'views')));
 // Handle all routes
 app.get('*', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path_1.default.join(__dirname, 'views', 'index.html'));
 });
 // Function to sync database
 const syncDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
