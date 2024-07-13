@@ -247,6 +247,58 @@ paths:
               schema:
                 $ref: "#/components/schemas/GDPRCookie"
 
+  /messages:
+    get:
+      summary: Get all messages
+      tags:
+        - Messages
+      responses:
+        "200":
+          description: A list of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+    post:
+      summary: Send a new message
+      tags:
+        - Messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Message"
+      responses:
+        "201":
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+
+  /messages/{id}:
+    get:
+      summary: Get a message by ID
+      tags:
+        - Messages
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A single message
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+        "404":
+          description: Message not found
+
 components:
   schemas:
     User:
@@ -280,10 +332,17 @@ components:
     Authentication:
       type: object
       properties:
-        email:
+        id:
           type: string
-        password:
+        user_id:
           type: string
+        type:
+          type: string
+        details:
+          type: string
+        created_at:
+          type: string
+          format: date-time
 
     AuthenticationResponse:
       type: object
@@ -330,9 +389,24 @@ components:
       properties:
         id:
           type: string
-        name:
+        user_id:
           type: string
-        description:
+        accepted_at:
+          type: string
+          format: date-time
+
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        sender_id:
+          type: string
+        receiver_id:
+          type: string
+        subject:
+          type: string
+        body:
           type: string
         created_at:
           type: string
