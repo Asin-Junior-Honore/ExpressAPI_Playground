@@ -18,8 +18,14 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/greetings', greetingRoutes);
 
-// Serve static files (API documentation)
+
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Handle all routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // Function to sync database
 const syncDatabase = async () => {
