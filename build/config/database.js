@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = void 0;
 const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
+const pg_1 = __importDefault(require("pg"));
 // Load environment variables from .env file
 dotenv_1.default.config();
 // Ensure process.env variables are defined before using them
@@ -19,6 +20,7 @@ if (!dbName || !dbUser || !dbPassword || !dbHost || !dbDialect) {
 }
 const sequelize = new sequelize_1.Sequelize(dbName, dbUser, dbPassword, {
     host: dbHost,
+    dialectModule: pg_1.default,
     dialect: dbDialect,
     logging: false,
 });

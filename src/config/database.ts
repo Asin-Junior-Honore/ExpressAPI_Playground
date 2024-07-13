@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-
+import pg from "pg"
 // Load environment variables from .env file
 dotenv.config();
 
@@ -17,6 +17,7 @@ if (!dbName || !dbUser || !dbPassword || !dbHost || !dbDialect) {
 
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
   host: dbHost,
+  dialectModule: pg,
   dialect: dbDialect as 'postgres',
   logging: false,
 });
