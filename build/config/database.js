@@ -7,7 +7,6 @@ exports.sequelize = void 0;
 const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
 const pg_1 = __importDefault(require("pg"));
-// Load environment variables from .env file
 dotenv_1.default.config();
 // Ensure process.env variables are defined before using them
 const dbName = process.env.DB_NAME;

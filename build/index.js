@@ -18,11 +18,9 @@ const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const greetingRoutes_1 = __importDefault(require("./routes/greetingRoutes"));
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
-// Load environment variables from .env file
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
-// Middleware
 app.use(express_1.default.json());
 // Routes
 app.use('/api/users', userRoutes_1.default);
@@ -37,14 +35,13 @@ app.get('*', (req, res) => {
 const syncDatabase = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield database_1.sequelize.authenticate();
-        yield database_1.sequelize.sync({ force: true }); // For development only. Use `sync` without `force` in production.
+        yield database_1.sequelize.sync({ force: true });
         console.log('Database synchronized successfully.');
     }
     catch (error) {
         console.error('Unable to synchronize the database:', error);
     }
 });
-// Start server after database sync
 syncDatabase().then(() => {
     app.listen(port, () => {
         console.log(`Server is running on http://localhost:${port}`);

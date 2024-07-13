@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import pg from "pg"
-// Load environment variables from .env file
 dotenv.config();
 
 // Ensure process.env variables are defined before using them

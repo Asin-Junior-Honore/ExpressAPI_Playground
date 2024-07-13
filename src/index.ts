@@ -5,13 +5,12 @@ import greetingRoutes from './routes/greetingRoutes';
 import path from 'path';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
+
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
 app.use(express.json());
 
 // Routes
@@ -31,14 +30,14 @@ app.get('*', (req, res) => {
 const syncDatabase = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ force: true }); // For development only. Use `sync` without `force` in production.
+    await sequelize.sync({ force: true });
     console.log('Database synchronized successfully.');
   } catch (error) {
     console.error('Unable to synchronize the database:', error);
   }
 };
 
-// Start server after database sync
+
 syncDatabase().then(() => {
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
